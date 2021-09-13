@@ -6,7 +6,6 @@ import re
 from pprint import pprint
 from PyInquirer import prompt, print_json
 
-
 docker_client = docker.from_env()
 
 
