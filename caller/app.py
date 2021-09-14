@@ -10,7 +10,9 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 docker_client = docker.from_env()
 
-
+@app.route('/', methods=["GET"])
+def hello():
+  return 'Hello world'
 
 @app.route('/images', methods=["GET"])
 def get_images():
@@ -43,5 +45,5 @@ def run_images():
   except:
     return jsonify({'success': False, 'msg': 'Something went wrong'}), 500
 
-if __name__ == "__main__":
-  app.run(host='0.0.0.0', port='8080', debug=True)
+# if __name__ == "__main__":
+#   app.run(host='0.0.0.0', port='8080', debug=True)
