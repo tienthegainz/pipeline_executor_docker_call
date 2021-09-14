@@ -37,7 +37,14 @@ def main():
   answers = prompt(questions)
   pprint(answers)
 
-  c = docker_client.containers.run(answers['image'], 'python3 main.py --task=\"{}\"'.format(answers['task']), detach=answers['detach'])
+  c = docker_client.containers.run(
+        image = answers['image'], 
+        command = 'python3 main.py --task=\"{}\"'.format(answers['task']), 
+        detach=answers['detach'],
+        volumes={
+          'mock-volume': {'bind': '/storage', 'mode': 'rw'}
+        }
+      )
   if answers['detach']:
     print('Container {} is running. Use docker logs to view'.format(c.short_id))
   else:
