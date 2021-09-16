@@ -45,5 +45,23 @@ def run_images():
   except:
     return jsonify({'success': False, 'msg': 'Something went wrong'}), 500
 
+
+@app.route('/process', methods=["POST"])
+def run_process():
+  """
+    data: {
+      images: List of docker image to run
+      
+    }
+  """
+  try:
+    request_data = request.get_json()
+    
+    return jsonify({
+      'success': True,
+    }), 200
+  except:
+    return jsonify({'success': False, 'msg': 'Something went wrong'}), 500
+
 # if __name__ == "__main__":
 #   app.run(host='0.0.0.0', port='8080', debug=True)
