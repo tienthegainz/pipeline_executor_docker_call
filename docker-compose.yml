@@ -3,14 +3,14 @@ version: "3.3"
 services:
   docker_caller:
     container_name: Pipeline-Caller
-    build: ./caller
+    build: ./caller_v3
     volumes:
       # Code
-      - ./caller:/app
+      - ./caller_v3:/app
       # Docker engine
       - /var/run/docker.sock:/var/run/docker.sock
     ports: 
-      - '8080:8080'
+      - '8000:8000'
     env_file:
     - .env
     

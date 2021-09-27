@@ -10,3 +10,7 @@
 # Bind mount the host's docker engine folder
 docker run -dp <HOST_POST>:8080 -v /var/run/docker.sock:/var/run/docker.sock <CALLER_IMAGE>
 ```
+or
+```
+docker-compose up
+```
